@@ -10,7 +10,7 @@ $ make install
 
 ```
 $ appicongen -h
-USAGE: appicon-gen [<name>] [--system-image-name <system-image-name>] [--color <color>]
+USAGE: appicon-gen [<name>] [--system-image-name <system-image-name>] [--color <color>] [--path <path>]
 
 ARGUMENTS:
   <name>                  output appiconset name (default: AppIcon)
@@ -18,7 +18,8 @@ ARGUMENTS:
 OPTIONS:
   --system-image-name <system-image-name>
                           SFSymbol name
-  --color <color>         hex style color (default: #000000)
+  --color <color>         hex style color
+  --path <path>           path
   -h, --help              Show help information.
 ```
 
