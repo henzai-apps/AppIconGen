@@ -13,14 +13,18 @@ struct AppiconGen: ParsableCommand {
     var systemImageName: String?
 
     @Option(name: .long, help: "hex style color")
-    var color: String = "#000000"
+    var color: String?
 
     mutating func run() throws {
         var appIconFactory = SFSymbolIconFactory()
         if let name = systemImageName {
             appIconFactory.systemImageName = name
         }
-        appIconFactory.color = NSColor(hex: self.color).cgColor
+        if let color = color {
+            appIconFactory.color = NSColor(hex: color).cgColor
+        } else {
+            appIconFactory.color = NSColor.random().cgColor
+        }
         
         let iconImage = appIconFactory.make()
         let url = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)

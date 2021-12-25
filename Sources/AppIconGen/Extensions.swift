@@ -27,3 +27,13 @@ extension NSColor {
         self.init(red: components.R, green: components.G, blue: components.B, alpha: components.a)
     }
 }
+
+extension NSColor {
+    class func random() -> NSColor {
+        let red =   UInt32.random(in: 0...255)
+        let green = UInt32.random(in: 0...255)
+        let blue =  UInt32.random(in: 0...255)
+        let color = NSColor(red: CGFloat(red) / 255, green: CGFloat(green) / 255, blue: CGFloat(blue) / 255, alpha: 1)
+        return color
+    }
+}
