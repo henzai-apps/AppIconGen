@@ -14,6 +14,9 @@ struct AppiconGen: ParsableCommand {
 
     @Option(name: .long, help: "hex style color")
     var color: String?
+    
+    @Option(name: .long, help: "path")
+    var path: String?
 
     mutating func run() throws {
         var appIconFactory = SFSymbolIconFactory()
@@ -25,9 +28,11 @@ struct AppiconGen: ParsableCommand {
         } else {
             appIconFactory.color = NSColor.random().cgColor
         }
-        
         let iconImage = appIconFactory.make()
-        let url = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
+        var url = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
+        if let path = path {
+            url.appendPathComponent(path)
+        }
         try AppIconWriter().write(to: url, name: name, srcImage: iconImage)
     }
 }
