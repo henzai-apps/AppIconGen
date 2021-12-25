@@ -1,10 +1,11 @@
 import Foundation
 import AppKit
 
-struct AppIconWriter {
+public struct AppIconWriter {
+    public init() {}
     let fileManager: FileManager = .default
     
-    func write(to path: URL, name: String = "AppIcon", srcImage: CGImage) throws {
+    public func write(to path: URL, name: String = "AppIcon", srcImage: CGImage) throws {
         // AppIcon.appiconset
         let appiconsetURL = path.appendingPathComponent("\(name).appiconset")
         try fileManager.createDirectory(
